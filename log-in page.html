@@ -4,19 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log-in</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form>
-      <p class="mail">
-        <label for="email">Email:</label> <br />
-        <input type="email" name="email" id="email" />
-      </p>
-      <p class="pass">
-        <label for="password">Password:</label> <br />
-        <input type="password" name="password" id="password" />
-      </p>
+    <section>
+      <form>
+        <fieldset id="login">
+          <h4 id="message">Log in here.</h4>
+          <p class="mail">
+            <label for="email" class="caption">Email:</label> <br />
+            <input type="email" name="email" id="email" />
+          </p>
+          <p class="pass">
+            <label for="password" class="caption">Password:</label> <br />
+            <input type="password" name="password" id="password" />
+          </p>
 
-      <input type="submit" value="sign-in" />
-    </form>
+          <input type="submit" id="sign-in" value="Login" />
+          <p id="user-sign-up">New user? <a href="">Sign-up</a></p>
+        </fieldset>
+      </form>
+    </section>
   </body>
 </html>

@@ -23,3 +23,4 @@ Started on `28th January 2025`.
 - [ ] Dashboard with info edit option
 - [ ] User authentication
 - [ ] "Forgot password?" option on login page
+- [ ] "Show password" option on login page and sign-up page

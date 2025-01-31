@@ -22,3 +22,4 @@ Started on `28th January 2025`.
 - [x] Sign-up page with the link to login page for new users
 - [ ] Dashboard with info edit option
 - [ ] User authentication
+- [ ] "Forgot password?" option on login page

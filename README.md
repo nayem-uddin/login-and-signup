@@ -1,6 +1,6 @@
-# login-and-dashboard
+# login-and-signup
 
-Webpage link: https://nayem-uddin.github.io/login-and-dashboard/
+Webpage link: https://nayem-uddin.github.io/login-and-signup/
 
 Started on `28th January 2025`.
 

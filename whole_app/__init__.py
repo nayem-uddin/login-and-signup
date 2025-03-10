@@ -77,3 +77,8 @@ def pass_encrypt(password):
   password+=app.secret_key
   password=hashlib.sha1(password.encode())
   return password.hexdigest()
+
+
+
+if __name__=='__main__':
+  app.run()

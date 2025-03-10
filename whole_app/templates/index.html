@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log-in</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
   </head>
   <body>
-    <form>
+    <form action="{{url_for('logged_in')}}" method="POST">
       <fieldset id="login">
         <h4 id="message">Use your account information to <br />log-in.</h4>
         <p class="mail">
@@ -23,9 +23,12 @@
             class="text-box"
           />
         </p>
-
+        <p>{{msg}}</p>
         <input type="submit" id="sign-in" value="Login" />
-        <p id="user-sign-up">New user? <a href="sign-up.html">Sign-up</a></p>
+        <p id="user-sign-up">
+          New user?
+          <a href="{{url_for('signup')}}">Sign-up</a>
+        </p>
       </fieldset>
     </form>
   </body>

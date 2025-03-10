@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign-up</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
   </head>
   <body>
-    <form id="sign-up-form">
+    <form id="sign-up-form" action="{{url_for('registered')}}" method="POST">
       <fieldset id="personal-info">
         <legend>Personal Information</legend>
         <p>
           <label for="name">Name:</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" required />
         </p>
         <p>
           <label for="date-of-birth">Date of birth:</label> &nbsp;
@@ -21,25 +21,33 @@
             name="date-of-birth"
             id="date-of-birth"
             style="padding: 1px"
+            required
           />
         </p>
         <p>
           <label for="gender">Gender:</label> &nbsp;
-          <select name="gender" id="gender" style="padding: 1px">
+          <select name="gender" id="gender" style="padding: 1px" required>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
         </p>
         <p>
           <label for="phone">Phone no.:</label>
-          <select name="phone" id="country-code">
-            <option value="bd">+880</option>
+          <select name="phone" id="country-code" required>
+            <option value="+880">+880 (BD)</option>
+            <option value="+91">+91 (IND)</option>
           </select>
-          <input type="number" name="phone" id="phone" />
+          <input type="number" name="number" id="phone" required />
         </p>
         <p>
           <label for="address">Present address:</label><br />
-          <textarea name="address" id="address" cols="30" rows="5"></textarea>
+          <textarea
+            name="address"
+            id="address"
+            cols="30"
+            rows="5"
+            required
+          ></textarea>
         </p>
       </fieldset>
       <fieldset id="account-info">
@@ -51,22 +59,25 @@
             name="username"
             id="username"
             pattern="\w+"
-            placeholder="Numbers, letters, and underscores only"
+            placeholder="A unique username"
+            required
           />
         </p>
         <p>
           <label for="email">Email:</label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" required />
         </p>
         <p>
           <label for="password">Password:</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password" required />
         </p>
       </fieldset>
       <input type="submit" value="Sign-up" id="sign-up" /><br />
       <p id="sign-in-redirect">
-        Already have an account? <a href="index.html">Sign-in</a>
+        Already have an account? <a href="{{url_for('login')}}">Sign-in</a>
       </p>
+      <p>{{msg}}</p>
     </form>
+    <script src="{{url_for('static',filename='index.js')}}"></script>
   </body>
 </html>

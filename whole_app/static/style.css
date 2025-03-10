@@ -43,3 +43,6 @@ form {
   padding: 20px 50px 5px 50px;
   border: 1px solid black;
 }
+table {
+  text-align: left;
+}

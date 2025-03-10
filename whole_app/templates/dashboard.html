@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+    <title>User dashboard</title>
+  </head>
+  <body>
+    <h1>Welcome, {{sess['name']}}</h1>
+    <table>
+      {% for i in range(e) %}
+      <tr>
+        <th>{{ header[i] }}</th>
+        <td>{{ sess[key[i]] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    Click <a href="{{url_for('logout')}}"> here</a> to log out.
+  </body>
+</html>

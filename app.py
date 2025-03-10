@@ -1,13 +1,25 @@
 from flask import Flask,url_for, render_template, redirect,request,session
 import hashlib
-import mysql.connector as mysc
+import pymysql
 
 app=Flask(__name__)
 app.secret_key='fagqt4aevzvnfg'
 
 
-db = mysc.connect(host='127.0.0.1',user='nayemuddin',password='NayemUddin2000',database='users')
-mycursor = db.cursor()
+timeout = 10
+connection = pymysql.connect(
+  charset="utf8mb4",
+  connect_timeout=timeout,
+  cursorclass=pymysql.cursors.DictCursor,
+  db="defaultdb",
+  host="nayemuddin-mnubpial-project-1.h.aivencloud.com",
+  password="AVNS_sftvfHF-LZN1CKvPJT1",
+  read_timeout=timeout,
+  port=18706,
+  user="avnadmin",
+  write_timeout=timeout,
+)
+mycursor = connection.cursor()
 
 @app.route('/')
 def login():
@@ -37,7 +49,7 @@ def registered():
       mycursor.execute(
         'insert into user_info(fullname,date_of_birth,gender,phone,address,username,email,pass) values (%s,%s,%s,%s,%s,%s,%s,%s)',(name,dob,gender,phone,address,useraname,email,password,)
         )
-      db.commit()
+      connection.commit()
       return redirect(url_for('login'))
     return render_template('sign-up.html',msg='Account already exists')
   
@@ -52,12 +64,13 @@ def logged_in():
     res = mycursor.fetchone()
     if not res:
       return render_template('index.html',msg="Account doesn't exist")
-    elif res[-1]!=password:
+    elif res['pass']!=password:
       return render_template('index.html',msg="Incorrect password")
     head=['ID','Name','Date of Birth','Gender','Contact No.','Present Address','Email ID','Username']
-    keys=['id','name','dob','gender','phone','address','email','username']
+    keys=['id','fullname','date_of_birth','gender','phone','address','email','username']
     elements=len(keys)
-    session['id'],session['name'],session['dob'],session['gender'],session['phone'],session['address'],session['email'],session['username'],session['password']=res
+    for key, value in res.items():
+      session[key]=value
     return render_template('dashboard.html',sess=session,header=head,key=keys,e=elements)
 
 
@@ -81,4 +94,4 @@ def pass_encrypt(password):
 
 
 if __name__=='__main__':
-  app.run()
+  app.run(debug=True)

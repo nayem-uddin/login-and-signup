@@ -94,4 +94,4 @@ def pass_encrypt(password):
 
 
 if __name__=='__main__':
-  app.run(debug=True)
+  app.run()
